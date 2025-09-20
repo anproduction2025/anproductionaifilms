@@ -2,7 +2,7 @@ import { GenerationOptions } from '../types'; // Giả sử file types.ts nằm 
 
 // --- ĐÂY LÀ DÒNG ANH CẦN THAY ĐỔI ---
 // Thay thế URL này bằng đường link "Bộ Não" trên Render của anh
-const API_BASE_URL = 'https://an-s9zd.onrender.com/';
+const API_BASE_URL = 'https://an-s9zd.onrender.com';
 
 async function generateApiRequest(endpoint: string, options: GenerationOptions): Promise<string[]> {
     const formData = new FormData();
@@ -57,4 +57,5 @@ export const generatePoseReferenceImages = (options: GenerationOptions): Promise
 export const generateSetupImages = (options: GenerationOptions): Promise<string[]> => {
     return generateApiRequest('/generate-setup', options);
 };
+
 
