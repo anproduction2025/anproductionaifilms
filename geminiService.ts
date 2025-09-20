@@ -29,10 +29,15 @@ async function generateApiRequest(endpoint: string, options: GenerationOptions):
         throw new Error(data.error || 'Đã có lỗi không xác định từ máy chủ.');
     }
 
+    // Thêm phần chẩn đoán lỗi thông minh
+    if (data.status && data.status.includes('Backend Server is running')) {
+        throw new Error('Kết nối backend thành công nhưng đã gọi sai cổng (endpoint). Vui lòng kiểm tra lại code frontend.');
+    }
+
     if (data.images && data.images.length > 0) {
         return data.images;
     } else {
-        throw new Error('Không nhận được ảnh nào từ AI.');
+        throw new Error('Không nhận được ảnh nào từ AI. Phản hồi của AI có thể là văn bản.');
     }
 }
 
